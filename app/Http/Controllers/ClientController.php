@@ -5,15 +5,25 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Http\Requests\StoreClientRequest;
 use App\Http\Requests\UpdateClientRequest;
+use Illuminate\Support\Facades\Auth;
+
 
 class ClientController extends Controller
 {
+
+    /** Get Clients for Dashboard */
+    public static function dashboard_clients()
+    {
+        return Client::all();
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $clients = Client::all();
+        return view('clients.index', compact('clients'));
     }
 
     /**
@@ -22,6 +32,7 @@ class ClientController extends Controller
     public function create()
     {
         //
+        return view('clients.create');
     }
 
     /**
@@ -30,6 +41,9 @@ class ClientController extends Controller
     public function store(StoreClientRequest $request)
     {
         //
+
+        Client::create([...$request->validated(), 'created_by_id' => Auth::id()]);
+        return redirect()->route('clients.index');
     }
 
     /**

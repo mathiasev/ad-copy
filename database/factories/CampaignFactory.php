@@ -18,6 +18,9 @@ class CampaignFactory extends Factory
     {
         return [
             //
+            'name' => $this->faker->name(),
+            'description' => $this->faker->sentence(),
+            'status' => $this->faker->randomElement(['draft', 'approved', 'scheduled', 'in-market', 'complete', 'rejected']),
         ];
     }
 }
