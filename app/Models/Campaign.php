@@ -31,6 +31,7 @@ class Campaign extends Model
         'description',
         'status',
         'client_id',
+        'created_by_id',
     ];
 
     /**
@@ -46,5 +47,15 @@ class Campaign extends Model
     public function client()
     {
         return $this->belongsTo(Client::class);
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function copyGroups()
+    {
+        return $this->hasMany(CopyGroup::class);
     }
 }

@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCampaignRequest extends FormRequest
+class StoreCopyGroupRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -23,10 +23,6 @@ class StoreCampaignRequest extends FormRequest
     {
         return [
             //
-            'name' => ['required', 'string', 'max:255'],
-            'description' => ['nullable', 'string', 'max:255'],
-            'status' => ['required', 'string', 'max:255'],
-            'client_id' => ['required', 'string', 'max:255'],
         ];
     }
 }

@@ -1,7 +1,13 @@
 <?php
 
+use App\Http\Controllers\CampaignController;
+use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CopyGroupController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Campaign;
+use App\Models\Client;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,5 +26,12 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('clients', ClientController::class)->middleware(['auth', 'verified']);
+Route::resource('campaigns', CampaignController::class)->middleware(['auth', 'verified']);
+Route::resource('channels', ChannelController::class)->middleware(['auth', 'verified']);
+Route::resource('copy-groups', CopyGroupController::class)->middleware(['auth', 'verified']);
+
+Route::get('/clients/{client}/campaign/{campaign}', [CampaignController::class, 'show'])->name('campaigns.show');
+
+
 
 require __DIR__ . '/auth.php';
