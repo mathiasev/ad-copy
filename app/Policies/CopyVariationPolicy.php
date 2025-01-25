@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\CopyGroup;
+use App\Models\CopyVariation;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class CopyGroupPolicy
+class CopyVariationPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class CopyGroupPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, CopyGroup $copyGroup): bool
+    public function view(User $user, CopyVariation $copyVariation): bool
     {
         return true;
     }
@@ -35,7 +35,7 @@ class CopyGroupPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, CopyGroup $copyGroup): bool
+    public function update(User $user, CopyVariation $copyVariation): bool
     {
         return true;
     }
@@ -43,7 +43,7 @@ class CopyGroupPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, CopyGroup $copyGroup): bool
+    public function delete(User $user, CopyVariation $copyVariation): bool
     {
         return true;
     }
@@ -51,7 +51,7 @@ class CopyGroupPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, CopyGroup $copyGroup): bool
+    public function restore(User $user, CopyVariation $copyVariation): bool
     {
         return true;
     }
@@ -59,7 +59,7 @@ class CopyGroupPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, CopyGroup $copyGroup): bool
+    public function forceDelete(User $user, CopyVariation $copyVariation): bool
     {
         return true;
     }

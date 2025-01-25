@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CopyGroup;
-use App\Http\Requests\StoreCopyGroupRequest;
-use App\Http\Requests\UpdateCopyGroupRequest;
-use App\Models\Campaign;
-use Illuminate\Support\Facades\Auth;
+use App\Models\CopyVariation;
+use App\Http\Requests\StoreCopyVariationRequest;
+use App\Http\Requests\UpdateCopyVariationRequest;
 
-class CopyGroupController extends Controller
+class CopyVariationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,17 +27,15 @@ class CopyGroupController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCopyGroupRequest $request)
+    public function store(StoreCopyVariationRequest $request)
     {
         //
-        $copyGroup = CopyGroup::create([...$request->validated(), 'created_by_id' => Auth::id()]);
-        return redirect()->route('campaigns.show', [$copyGroup->campaign->client, $copyGroup->campaign]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(CopyGroup $copyGroup)
+    public function show(CopyVariation $copyVariation)
     {
         //
     }
@@ -47,7 +43,7 @@ class CopyGroupController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CopyGroup $copyGroup)
+    public function edit(CopyVariation $copyVariation)
     {
         //
     }
@@ -55,7 +51,7 @@ class CopyGroupController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCopyGroupRequest $request, CopyGroup $copyGroup)
+    public function update(UpdateCopyVariationRequest $request, CopyVariation $copyVariation)
     {
         //
     }
@@ -63,7 +59,7 @@ class CopyGroupController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CopyGroup $copyGroup)
+    public function destroy(CopyVariation $copyVariation)
     {
         //
     }

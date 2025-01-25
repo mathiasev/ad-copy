@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Channel;
 use App\Http\Requests\StoreChannelRequest;
 use App\Http\Requests\UpdateChannelRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ChannelController extends Controller
 {
@@ -30,6 +31,8 @@ class ChannelController extends Controller
     public function store(StoreChannelRequest $request)
     {
         //
+        $channel = Channel::create([...$request->validated(), 'created_by_id' => Auth::id()]);
+        return redirect()->back();
     }
 
     /**

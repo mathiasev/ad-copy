@@ -82,7 +82,7 @@
 
                     <div class="-mx-4 px-4 py-8  sm:mx-0  lg:col-span-2 lg:row-span-2 lg:row-end-2">
                         <div class="copy-group-form" x-data="{ open: false }">
-                            <x-primary-button class="" @click="open = ! open">
+                            <x-secondary-button class="" @click="open = ! open">
                                 {{ __('Create a new copy group') }}
                                 <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                     fill="currentColor" aria-hidden="true">
@@ -90,7 +90,7 @@
                                         d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
                                         clip-rule="evenodd" />
                                 </svg>
-                            </x-primary-button>
+                            </x-secondary-button>
                             <div x-show="open" x-transition:enter="transition ease-out duration-100"
                                 x-transition:enter-start="transform opacity-0 scale-95"
                                 x-transition:enter-end="transform opacity-100 scale-100"
@@ -99,7 +99,7 @@
                                 x-transition:leave-end="transform opacity-0 scale-95" class=""
                                 @click.away="open = false">
                                 <div class="p-2 w-full" role="none">
-                                    <x-copy-group.create-form :channels="$channels" />
+                                    <x-copy-group.create-form :channels="$channels" :campaign="$campaign" />
                                 </div>
                             </div>
                         </div>
@@ -107,7 +107,6 @@
                         <!-- Copy Groups -->
                         @if($campaign->copyGroups->count())
                         <div class="mt-4">
-                            <h2 class="text-sm font-medium text-gray-500">{{ __("Copy Groups") }}</h2>
                             <x-copy-group.copy-group-wrapper>
                                 @foreach($campaign->copyGroups as $copyGroup)
                                 <x-copy-group.copy-group-item :copyGroup="$copyGroup" :campaign="$campaign" />

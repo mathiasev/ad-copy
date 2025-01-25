@@ -18,7 +18,7 @@ class CampaignFactory extends Factory
     {
         return [
             //
-            'name' => $this->faker->name(),
+            'name' => $this->faker->catchPhrase() . ' campaign',
             'description' => $this->faker->sentence(),
             'status' => $this->faker->randomElement(['draft', 'approved', 'scheduled', 'in-market', 'complete', 'rejected']),
             'created_by_id' => 1,

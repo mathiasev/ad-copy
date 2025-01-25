@@ -1,7 +1,8 @@
 <li class="flex items-center justify-between gap-x-6 py-5">
     <div class="min-w-0">
         <div class="flex items-start gap-x-3">
-            <a href="{{route('campaigns.show', [$client, $campaign])}}" class="hover:underline">
+            <a href="{{route('campaigns.show', ['client' => $client, 'campaign' => $campaign])}}"
+                class="hover:underline">
 
                 <p class="text-base font-semibold text-gray-900 dark:text-gray-300">{{$campaign->name}}</p>
             </a>
@@ -19,7 +20,7 @@
         </div>
     </div>
     <div class="flex flex-none items-center gap-x-4">
-        <a href="{{route('campaigns.show',[$client, $campaign]) }}"
+        <a href="{{route('campaigns.show',['client'=>$client, 'campaign'=>$campaign]) }}"
             class="hidden rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:block">View
             <span class="sr-only">, {{$campaign->name}} campaign</span></a>
         <div class="relative flex-none">

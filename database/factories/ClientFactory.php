@@ -17,7 +17,7 @@ class ClientFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
+            'name' => $this->faker->company(),
             'primary_color' => $this->faker->hexColor(),
             'secondary_color' => $this->faker->hexColor(),
             'created_by_id' => 1,

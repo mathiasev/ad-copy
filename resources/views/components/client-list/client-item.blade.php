@@ -7,7 +7,11 @@
 
         @php
         $name = explode(' ', $client->name);
+        if(count($name) > 1) {
         $initials = strtoupper($name[0][0]) . strtoupper($name[1][0]);
+        } else {
+        $initials = strtoupper($name[0][0]);
+        }
         @endphp
 
         {{$initials}}

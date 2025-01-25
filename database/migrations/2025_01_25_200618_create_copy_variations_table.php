@@ -1,7 +1,6 @@
 <?php
 
-use App\Models\Campaign;
-use App\Models\Channel;
+use App\Models\CopyGroup;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,21 +13,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('copy_groups', function (Blueprint $table) {
+        Schema::create('copy_variations', function (Blueprint $table) {
             $table->id();
 
-            $table->string('slug');
-            $table->string('name');
+            $table->json('data')->nullable();
 
             $table->enum('status', ['draft', 'approved', 'scheduled', 'in-market', 'complete', 'rejected'])->default('draft');
 
-            // Campaign
-            $table->foreignIdFor(Campaign::class, 'campaign_id')->constrained()->onDelete('cascade');
+            // Copy Group
+            $table->foreignIdFor(CopyGroup::class, 'copy_group_id')->constrained()->onDelete('cascade');
 
-            //Channel
-            $table->foreignIdFor(Channel::class, 'channel_id')->constrained()->onDelete('restrict');
-
-            // User
+            // Created By
             $table->foreignIdFor(User::class, 'created_by_id')->constrained()->onDelete('cascade');
 
             $table->timestamps();
@@ -40,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('copy_groups');
+        Schema::dropIfExists('copy_variations');
     }
 };

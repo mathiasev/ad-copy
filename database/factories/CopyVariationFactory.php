@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Channel>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\CopyVariation>
  */
-class ChannelFactory extends Factory
+class CopyVariationFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,7 +18,6 @@ class ChannelFactory extends Factory
     {
         return [
             //
-            
         ];
     }
 }

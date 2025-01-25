@@ -11,7 +11,7 @@ class StoreCopyGroupRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,10 @@ class StoreCopyGroupRequest extends FormRequest
     {
         return [
             //
+            'name' => ['required', 'string', 'max:255'],
+            'channel_id' => ['required', 'integer'],
+            'campaign_id' => ['required', 'integer'],
+
         ];
     }
 }
