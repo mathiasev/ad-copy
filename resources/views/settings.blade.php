@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white dark:bg-gray-800  shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100 flex justify-items-end w-full">
                     <x-primary-button onclick="history.back()">
                         {{ __("Go back") }}
@@ -27,7 +27,10 @@
                             class="mt-6 divide-y divide-gray-100 dark:divide-gray-300 border-t border-gray-400 text-sm/6">
                             @foreach($channels as $channel)
                             <li class="flex justify-between gap-x-6 py-6">
-                                <div class="font-medium text-gray-900 dark:text-gray-300">{{$channel->name}}</div>
+                                <a href="{{route('channels.edit', $channel)}}"
+                                    class="font-medium text-gray-900 dark:text-gray-300">
+                                    {{$channel->name}}
+                                </a>
                                 <button type="button"
                                     class="font-semibold text-indigo-600 hover:text-indigo-500">Update</button>
                             </li>

@@ -40,10 +40,8 @@ class ClientController extends Controller
      */
     public function store(StoreClientRequest $request)
     {
-        //
-
-        Client::create([...$request->validated(), 'created_by_id' => Auth::id()]);
-        return redirect()->route('clients.index');
+        $client = Client::create([...$request->validated(), 'created_by_id' => Auth::id()]);
+        return redirect()->route('clients.show', [$client]);
     }
 
     /**
@@ -52,7 +50,8 @@ class ClientController extends Controller
     public function show(Client $client)
     {
         //
-        return view('clients.single', compact('client'));
+        $deletedCampaigns = $client->campaigns()->where('status', 'archived')->get();
+        return view('clients.single', compact(['client', 'deletedCampaigns']));
     }
 
     /**
@@ -72,10 +71,22 @@ class ClientController extends Controller
     }
 
     /**
+     * Archive the specified resource from storage.
+     */
+    public function archive(Client $client)
+    {
+        $client->delete();
+        session()->flash('message', $client->name . " client was deleted successfully.");
+        return redirect()->route('clients.index');
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(Client $client)
     {
-        //
+        $client->forceDelete();
+        session()->flash('message', $client->name . " client was permanantly deleted successfully.");
+        return redirect()->route('clients.index');
     }
 }

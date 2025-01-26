@@ -5,6 +5,7 @@ use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CopyGroupController;
+use App\Http\Controllers\CopyVariationController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Campaign;
 use App\Models\Client;
@@ -36,6 +37,8 @@ Route::get('/clients/{client}/campaign/{campaign}', [CampaignController::class, 
 
 Route::resource('channels', ChannelController::class)->middleware(['auth', 'verified']);
 Route::resource('copy-groups', CopyGroupController::class)->middleware(['auth', 'verified']);
+Route::resource('copy-variations', CopyVariationController::class)->middleware(['auth', 'verified']);
+
 
 Route::get('/settings', [AppController::class, 'SettingsPage'])->name('settings');
 

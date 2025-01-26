@@ -72,8 +72,22 @@ class CampaignController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+    public function archive(Campaign $campaign)
+    {
+        //
+        $campaign->delete();
+        session()->flash('message', $campaign->name . ' campaign was deleted successfully.');
+        return redirect()->route('clients.show', $campaign->client);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy(Campaign $campaign)
     {
         //
+        $campaign->forceDelete();
+        session()->flash('message', $campaign->name . ' campaign was permanantly deleted successfully.');
+        return redirect()->route('clients.show', $campaign->client);
     }
 }

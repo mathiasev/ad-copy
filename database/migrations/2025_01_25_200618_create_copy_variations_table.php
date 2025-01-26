@@ -25,7 +25,7 @@ return new class extends Migration
 
             // Created By
             $table->foreignIdFor(User::class, 'created_by_id')->constrained()->onDelete('cascade');
-
+            $table->softDeletes();
             $table->timestamps();
         });
     }

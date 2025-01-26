@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreignIdFor(Client::class, 'client_id')->constrained()->onDelete('cascade');
             $table->foreignIdFor(User::class, 'created_by_id')->constrained()->onDelete('cascade');
 
-
+            $table->softDeletes();
             $table->timestamps();
         });
     }

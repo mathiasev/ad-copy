@@ -23,7 +23,7 @@ class StoreCopyVariationRequest extends FormRequest
     {
         return [
             //
-            'data' => ['required', 'array'],
+            'data' => ['required', 'string'],
         ];
     }
 }

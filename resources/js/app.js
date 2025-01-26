@@ -1,3 +1,4 @@
+import { JSONEditor } from '@json-editor/json-editor';
 import './bootstrap';
 
 import Alpine from 'alpinejs';
@@ -18,9 +19,20 @@ addEventListener('load', () => {
 });
 
 
-// // Whenever the user explicitly chooses light mode
-// localStorage.currentTheme = "light";
-// // Whenever the user explicitly chooses dark mode
-// localStorage.currentTheme = "dark";
-// // Whenever the user explicitly chooses to respect the OS preference
-// localStorage.removeItem("theme");
+window.JSONEditor = JSONEditor;
+
+const editors = document.querySelectorAll('.json-editor');
+if (editors) {
+    editors.forEach(editor => {
+
+        window['editor' + editor.id] = new JSONEditor(editor, {
+            theme: "tailwind",
+            schema: JSON.parse(editor.dataset.schema),
+        });
+
+        window['editor' + editor.id].on('change', () => {
+            let data = window['editor' + editor.id].getValue();
+            document.getElementById(editor.dataset.for).value = JSON.stringify(data);
+        });
+    });
+}

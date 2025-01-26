@@ -25,7 +25,7 @@ class StoreChannelRequest extends FormRequest
             //
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string', 'max:255'],
-            'settings' => ['nullable', 'string', 'max:255'],
+            'settings' => ['nullable', 'string'],
         ];
     }
 }

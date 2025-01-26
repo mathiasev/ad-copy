@@ -37,7 +37,7 @@ class ChannelPolicy
      */
     public function update(User $user, Channel $Channel): bool
     {
-        return true;
+        return $Channel->created_by_id == $user->id;
     }
 
     /**
@@ -45,7 +45,7 @@ class ChannelPolicy
      */
     public function delete(User $user, Channel $Channel): bool
     {
-        return true;
+        return $Channel->created_by_id == $user->id;
     }
 
     /**
@@ -53,7 +53,7 @@ class ChannelPolicy
      */
     public function restore(User $user, Channel $Channel): bool
     {
-        return true;
+        return $Channel->created_by_id == $user->id;
     }
 
     /**
@@ -61,6 +61,6 @@ class ChannelPolicy
      */
     public function forceDelete(User $user, Channel $Channel): bool
     {
-        return true;
+        return $Channel->created_by_id == $user->id;
     }
 }

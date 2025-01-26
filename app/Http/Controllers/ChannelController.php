@@ -32,7 +32,7 @@ class ChannelController extends Controller
     {
         //
         $channel = Channel::create([...$request->validated(), 'created_by_id' => Auth::id()]);
-        return redirect()->back();
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -46,17 +46,20 @@ class ChannelController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Channel $Channel)
+    public function edit(Channel $channel)
     {
         //
+        return view('channels.edit', compact('channel'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateChannelRequest $request, Channel $Channel)
+    public function update(UpdateChannelRequest $request, Channel $channel)
     {
         //
+        $channel->update($request->validated());
+        return redirect()->route('dashboard');
     }
 
     /**

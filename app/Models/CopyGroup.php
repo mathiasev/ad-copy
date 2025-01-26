@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -11,7 +12,7 @@ class CopyGroup extends Model
 {
     /** @use HasFactory<\Database\Factories\CopyGroupFactory> */
     use HasFactory;
-
+    use SoftDeletes;
     use HasSlug;
 
     /**
@@ -44,5 +45,10 @@ class CopyGroup extends Model
     public function channel()
     {
         return $this->belongsTo(Channel::class);
+    }
+
+    public function copyVariations()
+    {
+        return $this->hasMany(CopyVariation::class);
     }
 }

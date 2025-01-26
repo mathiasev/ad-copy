@@ -31,6 +31,18 @@ class Channel extends Model
     ];
 
     /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'settings' => 'array',
+        ];
+    }
+
+    /**
      * Get the route key for the model.
      *
      * @return string

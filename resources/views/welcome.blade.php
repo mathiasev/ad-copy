@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <h1 class="text-gray-200 text-xl font-semibold text-center">
+    <h1 class="text-gray-700 dark:text-gray-200 text-xl font-semibold text-center">
         {{ __('Ad Copy') }}
     </h1>
     <div class="flex flex-col justify-center items-center pt-6 gap-3">

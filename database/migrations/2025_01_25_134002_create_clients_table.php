@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('secondary_color')->nullable();
 
             $table->foreignIdFor(User::class, 'created_by_id')->constrained()->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
