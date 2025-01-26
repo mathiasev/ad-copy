@@ -58,4 +58,11 @@ class Campaign extends Model
     {
         return $this->hasMany(CopyGroup::class);
     }
+
+
+
+    public function copyVariations()
+    {
+        return $this->hasManyThrough(CopyVariation::class, CopyGroup::class);
+    }
 }

@@ -36,6 +36,7 @@ class CopyGroup extends Model
     }
 
     protected $fillable = ['name', 'campaign_id', 'channel_id', 'status', 'created_by_id'];
+    protected $appends = ['statusCount'];
 
     public function campaign()
     {
@@ -50,5 +51,16 @@ class CopyGroup extends Model
     public function copyVariations()
     {
         return $this->hasMany(CopyVariation::class);
+    }
+
+    public function statusCount()
+    {
+        $items = $this->copyVariations()->groupBy('status')->get();
+        $counts = [];
+
+        foreach ($items as $key => $value) {
+            $counts[$value->status] = $value->count();
+        }
+        return $counts;
     }
 }

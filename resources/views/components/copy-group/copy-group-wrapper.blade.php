@@ -6,6 +6,7 @@
         </p>
 
         <dl class="mt-6 divide-y divide-gray-100 border-t border-gray-200 text-sm/6">
+
             {{$slot}}
         </dl>
     </div>

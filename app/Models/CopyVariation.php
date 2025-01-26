@@ -12,7 +12,7 @@ class CopyVariation extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['data', 'status', 'created_by_id'];
+    protected $fillable = ['data', 'status', 'created_by_id', 'copy_group_id'];
 
     public function createdBy()
     {

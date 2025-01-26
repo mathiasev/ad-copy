@@ -106,9 +106,11 @@
 
                         <!-- Copy Groups -->
                         @if($campaign->copyGroups->count())
+
                         <div class="mt-4">
                             <x-copy-group.copy-group-wrapper>
                                 @foreach($campaign->copyGroups as $copyGroup)
+                                {{print_r($copyGroup->statusCount(), true)}}
                                 <x-copy-group.copy-group-item :copyGroup="$copyGroup" :campaign="$campaign" />
                                 @endforeach
                             </x-copy-group.copy-group-wrapper>
