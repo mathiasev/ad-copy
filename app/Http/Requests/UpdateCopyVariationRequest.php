@@ -11,7 +11,7 @@ class UpdateCopyVariationRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,9 @@ class UpdateCopyVariationRequest extends FormRequest
     {
         return [
             //
+            'data' => ['string'],
+            'status' => ['string'],
+            'copy_group_id' => ['required', 'integer'],
         ];
     }
 }

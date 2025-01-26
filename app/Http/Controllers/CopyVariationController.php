@@ -57,6 +57,8 @@ class CopyVariationController extends Controller
     public function update(UpdateCopyVariationRequest $request, CopyVariation $copyVariation)
     {
         //
+        $copyVariation->update($request->validated());
+        return redirect()->route('campaigns.show', [$copyVariation->copyGroup->campaign->client, $copyVariation->copyGroup->campaign]);
     }
 
     /**

@@ -55,11 +55,13 @@ class CopyGroup extends Model
 
     public function statusCount()
     {
-        $items = $this->copyVariations()->groupBy('status')->get();
+        $items = $this->copyVariations->groupBy('status');
+
+        // dd($items);
         $counts = [];
 
         foreach ($items as $key => $value) {
-            $counts[$value->status] = $value->count();
+            $counts[$key] = $value->count();
         }
         return $counts;
     }
