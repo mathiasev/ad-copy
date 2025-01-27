@@ -3,7 +3,7 @@
 
     @if(session()->has('message'))
 
-    <div x-data="{}" class=" bg-background text-foreground group pointer-events-auto relative flex w-full items-center justify-between space-x-4
+    <div x-data="{}" class=" bg-white text-foreground group pointer-events-auto relative flex w-full items-center justify-between space-x-4
         overflow-hidden rounded-md border p-6 pr-8 shadow-lg transition-all  ">
         <svg xmlns=" http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="h-6 w-6">

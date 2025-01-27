@@ -11,7 +11,7 @@ class UpdateCampaignRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return $this->user()->can('update', $this->campaign);
+        return true;
     }
 
     /**
@@ -23,9 +23,9 @@ class UpdateCampaignRequest extends FormRequest
     {
         return [
             //
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string', 'max:255'],
-            'status' => ['required', 'string', 'max:255'],
+            'status' => ['nullable', 'string', 'max:255'],
         ];
     }
 }

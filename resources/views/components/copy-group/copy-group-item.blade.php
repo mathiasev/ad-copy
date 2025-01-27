@@ -5,7 +5,7 @@
             {{ucfirst($copyGroup->status)}}
         </span>
 
-        <h3>{{$copyGroup->name}}</h3>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-200">{{$copyGroup->name}}</h3>
 
         <span class="text-gray-400 dark:text-gray-500">
             {{__('Updated:')}} <time datetime="{{$copyGroup->updated_at}}">{{$copyGroup->created_at->format('d M Y @
@@ -16,6 +16,15 @@
             <span class="sr-only">Channel </span>
             {{$copyGroup->channel->name}}
         </span>
+
+        @if($copyGroup->statusCount())
+        <dl>
+            @foreach($copyGroup->statusCount() as $status => $count)
+            <dt class="text-sm/6 font-semibold text-gray-400">{{ucfirst($status)}}</dt>
+            <dd class="mt-1 text-base font-normal text-gray-900">{{$count}}</dd>
+            @endforeach
+        </dl>
+        @endif
 
     </dt>
     <dd class="mt-1  justify-between gap-x-6 sm:mt-0 sm:flex-auto flex flex-col gap-4">

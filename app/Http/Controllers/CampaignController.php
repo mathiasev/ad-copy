@@ -66,7 +66,9 @@ class CampaignController extends Controller
      */
     public function update(UpdateCampaignRequest $request, Campaign $campaign)
     {
-        //
+        $campaign->update($request->validated());
+        session()->flash('message', $campaign->name . ' campaign was updated successfully.');
+        return redirect()->route('campaigns.show', [$campaign->client, $campaign]);
     }
 
     /**

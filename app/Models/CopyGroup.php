@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -13,6 +15,7 @@ class CopyGroup extends Model
     /** @use HasFactory<\Database\Factories\CopyGroupFactory> */
     use HasFactory;
     use SoftDeletes;
+    use LogsActivity;
     use HasSlug;
 
     /**
@@ -23,6 +26,11 @@ class CopyGroup extends Model
         return SlugOptions::create()
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults();
     }
 
     /**
@@ -57,7 +65,6 @@ class CopyGroup extends Model
     {
         $items = $this->copyVariations->groupBy('status');
 
-        // dd($items);
         $counts = [];
 
         foreach ($items as $key => $value) {
