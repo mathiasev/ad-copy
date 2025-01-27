@@ -18,6 +18,9 @@ class CopyVariationFactory extends Factory
     {
         return [
             //
+            'data' => $this->faker->sentence(),
+            'status' => $this->faker->randomElement(['draft', 'approved', 'scheduled', 'in-market', 'complete', 'rejected']),
+            'created_by_id' => 1
         ];
     }
 }

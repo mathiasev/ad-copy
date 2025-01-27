@@ -6,9 +6,7 @@
 
                 <p class="text-base font-semibold text-gray-900 dark:text-gray-300">{{$campaign->name}}</p>
             </a>
-            <p
-                class="mt-0.5 whitespace-nowrap rounded-md bg-yellow-50 px-1.5 py-0.5 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">
-                {{$campaign->status}}</p>
+            <x-status-pill :status="$campaign->status" />
         </div>
         <div class="mt-1 flex items-center gap-x-2 text-xs/5 text-gray-500">
             <p class="whitespace-nowrap">Created <time

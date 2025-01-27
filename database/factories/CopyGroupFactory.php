@@ -18,6 +18,11 @@ class CopyGroupFactory extends Factory
     {
         return [
             //
+            'name' => $this->faker->catchPhrase(),
+            'description' => $this->faker->sentence(),
+            'status' => $this->faker->randomElement(['draft', 'approved', 'scheduled', 'in-market', 'complete', 'rejected']),
+            'channel_id' => 1,
+            'created_by_id' => 1
         ];
     }
 }

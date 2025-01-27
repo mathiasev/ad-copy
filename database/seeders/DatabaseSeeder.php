@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Campaign;
 use App\Models\Channel;
 use App\Models\Client;
+use App\Models\CopyGroup;
+use App\Models\CopyVariation;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -24,13 +27,18 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make(env('DEFAULT_PASSWORD', 'password')),
         ]);
 
-        Client::factory()->count(10)->hasCampaigns(4)->create();
-
         Channel::factory()->create([
             'name' => 'Facebook ads',
             'description' => 'Facebook',
-            'settings' => '{"fields":[{"name":"Headline","type":"text","length":255,"min_count":1,"max_count":1,"required":true},{"name":"Description","type":"textarea","length":255,"min_count":1,"max_count":1,"required":true}]}',
+            'settings' => '',
             'created_by_id' => 1,
         ]);
+        Client::factory()->count(10)->has(
+            Campaign::factory(4)->has(
+                CopyGroup::factory()->count(4)->has(
+                    CopyVariation::factory()->count(4)
+                )
+            )
+        )->create();
     }
 }

@@ -2,7 +2,7 @@
     <x-slot name="header">
         <span class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight flex">
             <a href="{{ route('clients.show', [$campaign->client]) }}" title="{{ __('Go to client') }}">
-                <span class="text-gray-400 dark:text-gray-500 mr-4">{{$campaign->client->name}}</span>
+                <span class="text-gray-400 dark:text-gray-500 mr-4">{{ $campaign->client->name }}</span>
             </a>
             <h1>
                 {{ $campaign->name }}
@@ -33,8 +33,7 @@
                                 x-transition:enter-end="transform opacity-100 scale-100"
                                 x-transition:leave="transition ease-in duration-75"
                                 x-transition:leave-start="transform opacity-100 scale-100"
-                                x-transition:leave-end="transform opacity-0 scale-95" class=""
-                                @click.away="open = false">
+                                x-transition:leave-end="transform opacity-0 scale-95" class="">
                                 <div class="p-2 w-full" role="none">
                                     <x-copy-group.create-form :channels="$channels" :campaign="$campaign" />
                                 </div>
@@ -42,25 +41,25 @@
                         </div>
 
                         <!-- Copy Groups -->
-                        @if($campaign->copyGroups->count())
+                        @if ($campaign->copyGroups->count())
 
-                        <div class="mt-4">
-                            <x-copy-group.copy-group-wrapper>
-                                @foreach($campaign->copyGroups as $copyGroup)
-                                <x-copy-group.copy-group-item :copyGroup="$copyGroup" :campaign="$campaign" />
-                                @endforeach
-                            </x-copy-group.copy-group-wrapper>
-                        </div>
+                            <div class="mt-4">
+                                <x-copy-group.copy-group-wrapper>
+                                    @foreach ($campaign->copyGroups as $copyGroup)
+                                        <x-copy-group.copy-group-item :copyGroup="$copyGroup" :campaign="$campaign" />
+                                    @endforeach
+                                </x-copy-group.copy-group-wrapper>
+                            </div>
                         @endif
                     </div>
 
-                    @if($campaign->activity()->count())
-                    <div class="row-end-2">
-                        Activity
-                        <div class="mt-4">
-                            <x-activity.activity-wrapper :activity="$campaign->activity()" />
+                    @if ($campaign->activity()->count())
+                        <div class="row-end-2">
+                            Activity
+                            <div class="mt-4">
+                                <x-activity.activity-wrapper :activity="$campaign->activity()" />
+                            </div>
                         </div>
-                    </div>
                     @endif
                 </div>
             </div>

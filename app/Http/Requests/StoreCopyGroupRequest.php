@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\CopyGroup;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCopyGroupRequest extends FormRequest
@@ -11,7 +12,7 @@ class StoreCopyGroupRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return $this->user()->can('create', CopyGroup::class);
     }
 
     /**
@@ -26,7 +27,8 @@ class StoreCopyGroupRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'channel_id' => ['required', 'integer'],
             'campaign_id' => ['required', 'integer'],
-
+            'status' => ['nullable', 'string'],
+            'description' => ['nullable', 'string', 'max:255'],
         ];
     }
 }
