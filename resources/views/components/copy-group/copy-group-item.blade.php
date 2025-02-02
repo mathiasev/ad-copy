@@ -36,22 +36,7 @@
                 <div class="flex flex-col gap-y-2">
                     <div class="flex flex-col gap-y-2">
                         @foreach ($copyGroup->copyVariations as $copyVariation)
-                            <div class="flex flex-col gap-y-2">
-                                <div class="flex justify-between">
-                                    {{ $copyVariation->data }}
-                                    <x-status-pill :status="$copyVariation->status" class="mr-0 ml-auto" />
-                                </div>
-                                <form action="{{ route('copy-variations.update', $copyVariation) }}" method="POST">
-                                    @csrf
-                                    @method('PUT')
-                                    <input type="hidden" id="copy_group_id" name="copy_group_id"
-                                        value="{{ $copyGroup->id }}">
-                                    <span class="isolate inline-flex rounded-md shadow-sm">
-                                        <x-status-button-group />
-                                    </span>
-                                </form>
-
-                            </div>
+                            <x-copy-variation.variation-item :copyVariation="$copyVariation" :copyGroup="$copyGroup" />
                         @endforeach
                     </div>
                 </div>

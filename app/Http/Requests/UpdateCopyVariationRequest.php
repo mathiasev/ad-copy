@@ -23,7 +23,7 @@ class UpdateCopyVariationRequest extends FormRequest
     {
         return [
             //
-            'data' => ['string'],
+            'data' => ['required', 'json'],
             'status' => ['string'],
             'copy_group_id' => ['required', 'integer'],
         ];

@@ -31,7 +31,10 @@ class CopyVariationController extends Controller
     public function store(StoreCopyVariationRequest $request)
     {
         //
-        $copyVariation = CopyVariation::create([...$request->validated(), 'created_by_id' => Auth::id()]);
+        $copyVariation = CopyVariation::create([
+            ...$request->validated(),
+            'created_by_id' => Auth::id()
+        ]);
         return redirect()->route('campaigns.show', [$copyVariation->copyGroup->campaign->client, $copyVariation->copyGroup->campaign]);
     }
 
